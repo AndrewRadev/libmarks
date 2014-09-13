@@ -1,0 +1,8 @@
+<% if !defined?(bookmark) %>
+  <% bookmark = Bookmark.new %>
+<% end %>
+
+<%= form_for bookmark do |f| %>
+  <%= f.text_field :url %>
+  <%= f.submit "Add" %>
+<% end %>

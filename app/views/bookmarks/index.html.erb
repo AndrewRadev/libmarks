@@ -1,0 +1,13 @@
+<h1>All the bookmarks</h1>
+
+<%= render 'add_new' %>
+
+<ul>
+  <% @bookmarks.each do |bookmark| %>
+    <li>
+      <%= link_to bookmark.url, bookmark.url %>
+      |
+      <%= link_to "Delete", bookmark, data: {method: 'DELETE', confirm: 'You sure?'} %>
+    </li>
+  <% end %>
+</ul>
