@@ -10,9 +10,9 @@ Another inspiration was the [The Ruby Toolbox](https://www.ruby-toolbox.com/). I
 
 In tentative chronological order:
 
-- [] Fetch library information from github, rubygems (and more places, later on)
-- [] Users: authentication, per-user bookmarks
-- [] Design: maybe just a simple bootstrap to begin with. Or a clone of The Ruby Toolbox (or something else)?
-- [] Categorisation and/or tagging of libraries
-- [] API access, remote bookmarking, a bookmarklet
-- [] Dead-simple Android app for bookmarking on the go (using the API)
+- [ ] Fetch library information from github, rubygems (and more places, later on)
+- [ ] Users: authentication, per-user bookmarks
+- [ ] Design: maybe just a simple bootstrap to begin with. Or a clone of The Ruby Toolbox (or something else)?
+- [ ] Categorisation and/or tagging of libraries
+- [ ] API access, remote bookmarking, a bookmarklet
+- [ ] Dead-simple Android app for bookmarking on the go (using the API)
