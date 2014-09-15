@@ -6,6 +6,21 @@ That's why I started this simple website to act as a better bookmark holder.
 
 Another inspiration was the [The Ruby Toolbox](https://www.ruby-toolbox.com/). It's an excellent resource for popular ruby libraries, categorizing them and showing additional info, but there's no way to bookmark libraries there as personal favorites.
 
+## Setup
+
+To get this working for a development machine, you need a working ruby setup. Having that, it should be enough to:
+
+```
+bundle install
+bundle exec rake db:migrate
+```
+
+To start the server, simply execute:
+
+```
+rails server
+```
+
 ## Stuff to do
 
 In tentative chronological order:
