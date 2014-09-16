@@ -31,3 +31,4 @@ In tentative chronological order:
 - [ ] Categorisation and/or tagging of libraries
 - [ ] API access, remote bookmarking, a bookmarklet
 - [ ] Dead-simple Android app for bookmarking on the go (using the API)
+- [ ] Import a bunch of existing good gems from https://github.com/markets/awesome-ruby
