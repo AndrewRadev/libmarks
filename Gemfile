@@ -30,9 +30,6 @@ gem 'jbuilder', '~> 2.0'
 # Use unicorn as the app server
 # gem 'unicorn'
 
-# Use Capistrano for deployment
-# gem 'capistrano-rails', group: :development
-
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
@@ -45,6 +42,10 @@ group :development do
   # Spring speeds up development by keeping your application running in the
   # background. Read more: https://github.com/rails/spring
   gem 'spring'
+
+  # Use Capistrano for deployment
+  gem 'capistrano',       '~> 3.1'
+  gem 'capistrano-rails', '~> 1.1'
 end
 
 group :development, :test do
