@@ -13,6 +13,7 @@ To get this working for a development machine, you need a working ruby setup. Ha
 ```
 bundle install
 bundle exec rake db:migrate
+cp config/secrets.yml.example config/secrets.yml
 ```
 
 To start the server, simply execute:
