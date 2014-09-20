@@ -8,12 +8,10 @@ Another inspiration was the [The Ruby Toolbox](https://www.ruby-toolbox.com/). I
 
 ## Setup
 
-To get this working for a development machine, you need a working ruby setup. Having that, it should be enough to:
+To get this working for a development machine, you need a working ruby setup. Having that, it should be enough to run:
 
 ```
-bundle install
-bundle exec rake db:migrate
-cp config/secrets.yml.example config/secrets.yml
+bin/setup
 ```
 
 To start the server, simply execute:
