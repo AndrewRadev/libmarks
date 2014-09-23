@@ -4,6 +4,7 @@ class Bookmark < ActiveRecord::Base
   store :info, coder: JSON
 
   # TODO (2014-09-23) Test using https://github.com/peter-murach/github#7-testing
+  # TODO (2014-09-23) Error handling
   def fetch_url_info
     if uri.host == 'github.com'
       user_name, repo_name = parse_github_link
