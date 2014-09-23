@@ -10,5 +10,19 @@
 
 <div>
   <h2>Info</h2>
-  Coming soon.
+
+  <% if @bookmark.source.github? %>
+    <ul>
+      <% @bookmark.info.each do |key, value| %>
+        <li>
+          <strong><%= key.capitalize %></strong>:
+          <%= value %>
+        </li>
+      <% end %>
+    </ul>
+  <% else %>
+    <p>
+      No info available at this time.
+    </p>
+  <% end %>
 </div>

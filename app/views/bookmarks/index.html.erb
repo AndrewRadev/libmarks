@@ -5,6 +5,8 @@
 <ul>
   <% @bookmarks.each do |bookmark| %>
     <li>
+      <%= link_to "Info", bookmark %>
+      |
       <%= link_to bookmark.url, bookmark.url %>
       |
       <%= link_to "Delete", bookmark, data: {method: 'DELETE', confirm: 'You sure?'} %>

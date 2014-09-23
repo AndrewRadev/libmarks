@@ -27,6 +27,9 @@ gem 'jquery-rails'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'
 
+# Github API for github links
+gem 'github_api'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
@@ -52,6 +55,9 @@ group :development do
   # Use Capistrano for deployment
   gem 'capistrano',       '~> 3.1'
   gem 'capistrano-rails', '~> 1.1'
+
+  # Debugging
+  gem 'pry-rails'
 end
 
 group :development, :test do

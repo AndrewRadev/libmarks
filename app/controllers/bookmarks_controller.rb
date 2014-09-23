@@ -15,7 +15,10 @@ class BookmarksController < ApplicationController
     bookmark_params = params.require(:bookmark).permit(:url)
     @bookmark = Bookmark.new(bookmark_params)
 
-    if @bookmark.save
+    if @bookmark.valid?
+      @bookmark.fetch_url_info
+      @bookmark.save!
+
       flash[:notice] = 'Bookmark was successfully created.'
       redirect_to @bookmark
     else
