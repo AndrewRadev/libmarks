@@ -20,6 +20,7 @@ class Bookmark < ActiveRecord::Base
     github_response      = github_client.repos(user: user_name, repo: repo_name).get
     github_info          = github_response.body
 
+    self.info_fetched_at = Time.zone.now
     self.source = 'github'
     self.info = github_info.slice(
       "name", "full_name", "description", "fork", "homepage", "size",
@@ -29,6 +30,7 @@ class Bookmark < ActiveRecord::Base
       "network_count", "subscribers_count"
     )
   rescue Github::Error::GithubError => e
+    self.info_fetched_at = Time.zone.now
     self.source = 'github_error'
     self.info = {
       error: e.message

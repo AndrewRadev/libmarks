@@ -72,4 +72,7 @@ end
 group :test do
   # coverage information
   gem 'simplecov', require: false
+
+  # freeze time
+  gem 'timecop'
 end

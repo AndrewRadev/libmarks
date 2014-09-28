@@ -9,7 +9,16 @@
 </div>
 
 <div>
-  <h2>Info (<%= link_to "refresh", update_info_bookmark_path(@bookmark), method: 'PUT' %>)</h2>
+  <% refresh_link = link_to "refresh", update_info_bookmark_path(@bookmark), method: 'PUT' %>
+
+  <h2>
+    Info
+    <% if @bookmark.info_fetched_at? %>
+      (fetched at <%=l @bookmark.info_fetched_at %>, <%= refresh_link %>)
+    <% else %>
+      (<%= refresh_link %>)
+    <% end %>
+  </h2>
 
   <% if @bookmark.source.github? %>
 

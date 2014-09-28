@@ -6,6 +6,10 @@ describe Bookmark do
     let(:bookmark) { Bookmark.new(url: url) }
 
     describe "#fetch_url_info" do
+      around :each do |example|
+        Timecop.freeze { example.run }
+      end
+
       it "fetches the right info from github" do
         stub_request(:get, 'https://api.github.com/repos/AndrewRadev/splitjoin.vim').to_return({
           body: {
@@ -16,6 +20,7 @@ describe Bookmark do
 
         bookmark.fetch_url_info
 
+        bookmark.info_fetched_at.should eq Time.zone.now
         bookmark.source.should eq 'github'
         bookmark.info.should eq({
           'description' => 'A vim plugin',
@@ -30,6 +35,7 @@ describe Bookmark do
 
         bookmark.fetch_url_info
 
+        bookmark.info_fetched_at.should eq Time.zone.now
         bookmark.source.should eq 'github_error'
         bookmark.info.should have_key("error")
       end
