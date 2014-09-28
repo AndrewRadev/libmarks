@@ -48,6 +48,7 @@ group :development do
   # Spring speeds up development by keeping your application running in the
   # background. Read more: https://github.com/rails/spring
   gem 'spring'
+  gem 'spring-commands-rspec'
 
   # Web console upon error
   gem 'web-console', '~> 2.0.0.beta3'
@@ -63,4 +64,7 @@ end
 group :development, :test do
   # Use rspec for testing
   gem 'rspec-rails'
+
+  # Mock HTTP responses
+  gem 'webmock'
 end

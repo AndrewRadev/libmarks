@@ -3,22 +3,9 @@ class Bookmark < ActiveRecord::Base
 
   store :info, coder: JSON
 
-  # TODO (2014-09-23) Test using https://github.com/peter-murach/github#7-testing
-  # TODO (2014-09-23) Error handling
   def fetch_url_info
     if uri.host == 'github.com'
-      user_name, repo_name = parse_github_link
-      github_response      = github_client.repos(user: user_name, repo: repo_name).get
-      github_info          = github_response.body
-
-      self.source = 'github'
-      self.info = github_info.slice(
-        "name", "full_name", "description", "fork", "homepage", "size",
-        "language", "created_at", "updated_at", "pushed_at",
-        "stargazers_count", "watchers_count", "forks_count",
-        "open_issues_count", "forks", "open_issues", "watchers",
-        "network_count", "subscribers_count"
-      )
+      fetch_github_info
     end
   end
 
@@ -27,6 +14,26 @@ class Bookmark < ActiveRecord::Base
   end
 
   private
+
+  def fetch_github_info
+    user_name, repo_name = parse_github_link
+    github_response      = github_client.repos(user: user_name, repo: repo_name).get
+    github_info          = github_response.body
+
+    self.source = 'github'
+    self.info = github_info.slice(
+      "name", "full_name", "description", "fork", "homepage", "size",
+      "language", "created_at", "updated_at", "pushed_at",
+      "stargazers_count", "watchers_count", "forks_count",
+      "open_issues_count", "forks", "open_issues", "watchers",
+      "network_count", "subscribers_count"
+    )
+  rescue Github::Error::GithubError => e
+    self.source = 'github_error'
+    self.info = {
+      error: e.message
+    }
+  end
 
   def uri
     @uri ||= URI.parse(url)
