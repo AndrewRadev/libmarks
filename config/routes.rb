@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
-  root 'bookmarks#new'
+  root 'bookmarks#index'
 
-  resources :bookmarks
+  resources :bookmarks do
+    member do
+      put :update_info
+    end
+  end
 end

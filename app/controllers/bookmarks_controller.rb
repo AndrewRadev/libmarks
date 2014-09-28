@@ -26,6 +26,15 @@ class BookmarksController < ApplicationController
     end
   end
 
+  def update_info
+    @bookmark = Bookmark.find(params[:id])
+    @bookmark.fetch_url_info
+    @bookmark.save!
+
+    flash[:notice] = 'Info updated'
+    redirect_to :back
+  end
+
   def destroy
     @bookmark = Bookmark.find(params[:id])
     @bookmark.destroy

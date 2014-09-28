@@ -9,9 +9,10 @@
 </div>
 
 <div>
-  <h2>Info</h2>
+  <h2>Info (<%= link_to "refresh", update_info_bookmark_path(@bookmark), method: 'PUT' %>)</h2>
 
   <% if @bookmark.source.github? %>
+
     <ul>
       <% @bookmark.info.each do |key, value| %>
         <li>
@@ -20,9 +21,17 @@
         </li>
       <% end %>
     </ul>
-  <% else %>
+
+  <% elsif @bookmark.source.github_error? %>
+
     <p>
-      No info available at this time.
+      <h3>This looks like a github link, but there was an error fetching info:</h3>
+      <pre><%= @bookmark.info[:error] %></pre>
     </p>
+
+  <% else %>
+
+    <p>No info available at this time.</p>
+
   <% end %>
 </div>
