@@ -68,3 +68,8 @@ group :development, :test do
   # Mock HTTP responses
   gem 'webmock'
 end
+
+group :test do
+  # coverage information
+  gem 'simplecov', require: false
+end
