@@ -66,7 +66,7 @@ group :development, :test do
   gem 'rspec-rails'
 
   # Mock HTTP responses
-  gem 'webmock'
+  gem 'webmock', require: false
 end
 
 group :test do
