@@ -26,7 +26,7 @@ In tentative chronological order:
 
 - [x] Update to rails 4.2, take a look at http://raysrashmi.com/2014/09/02/new-features-in-rails-4-2
 - [x] Fetch library information from github, rubygems (and more places, later on)
-- [ ] Migrate to postgresql in order to use hstore
+- [x] Migrate to postgresql
 - [ ] Users: authentication, per-user bookmarks
 - [ ] Design: maybe just a simple bootstrap to begin with. Or a clone of The Ruby Toolbox (or something else)?
 - [ ] Categorisation and/or tagging of libraries
