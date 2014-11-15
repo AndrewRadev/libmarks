@@ -28,7 +28,7 @@ In tentative chronological order:
 - [x] Fetch library information from github, rubygems (and more places, later on)
 - [x] Migrate to postgresql
 - [ ] Users: authentication, per-user bookmarks
-- [ ] Design: maybe just a simple bootstrap to begin with. Or a clone of The Ruby Toolbox (or something else)?
+- [x] Design: maybe just a simple bootstrap to begin with. Or a clone of The Ruby Toolbox (or something else)?
 - [ ] Categorisation and/or tagging of libraries
 - [ ] API access, remote bookmarking, a bookmarklet
 - [ ] Dead-simple Android app for bookmarking on the go (using the API)
