@@ -2,7 +2,9 @@
   <% bookmark = Bookmark.new %>
 <% end %>
 
-<%= form_for bookmark do |f| %>
-  <%= f.text_field :url %>
-  <%= f.submit "Add" %>
-<% end %>
+<div class="add-bookmark">
+  <%= form_for bookmark, html: {class: 'form-inline'} do |f| %>
+    <%= f.url_field :url, class: 'url-input form-control' %>
+    <%= f.submit "Add", class: 'btn btn-primary' %>
+  <% end %>
+</div>

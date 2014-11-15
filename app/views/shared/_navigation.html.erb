@@ -1,3 +1,17 @@
-<%= link_to 'All bookmarks', bookmarks_path %>
-|
-<%= link_to 'Add a new bookmark', new_bookmark_path %>
+<nav class="navbar navbar-default" role="navigation">
+  <div class="navbar-header">
+    <%= link_to 'Libmarks', root_path, class: 'navbar-brand' %>
+  </div>
+
+  <div class="navbar-collapse collapse">
+    <ul class="nav navbar-nav">
+      <%= content_tag :li, class: ('active' if current_base_url?(bookmarks_path)) do %>
+        <%= link_to 'All bookmarks', bookmarks_path %>
+      <% end %>
+
+      <%= content_tag :li, class: ('active' if current_base_url?(new_bookmark_path)) do %>
+        <%= link_to 'Add a new bookmark', new_bookmark_path %>
+      <% end %>
+    </ul>
+  </div>
+</nav>

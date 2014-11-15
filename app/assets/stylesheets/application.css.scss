@@ -1,0 +1,23 @@
+@import "bootswatch/simplex/variables";
+@import "bootstrap";
+@import "bootswatch/simplex/bootswatch";
+
+.right {
+  float: right;
+}
+
+.bookmark-link {
+  margin-left: 10px;
+  font-size: 16px;
+}
+
+.add-bookmark {
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  margin-bottom: 10px;
+
+  .url-input {
+    width: 50%;
+  }
+}

@@ -38,6 +38,10 @@ GEM
     arel (6.0.0.beta1)
     binding_of_caller (0.7.3.pre1)
       debug_inspector (>= 0.0.1)
+    bootstrap-sass (3.3.1.0)
+      sass (~> 3.2)
+    bootswatch-rails (3.2.4)
+      railties (>= 3.1)
     builder (3.2.2)
     capistrano (3.2.1)
       i18n
@@ -219,6 +223,8 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  bootstrap-sass
+  bootswatch-rails
   capistrano (~> 3.1)
   capistrano-rails (~> 1.1)
   coffee-rails (~> 4.0.0)

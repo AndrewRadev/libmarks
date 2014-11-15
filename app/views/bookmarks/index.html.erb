@@ -2,14 +2,12 @@
 
 <%= render 'add_new' %>
 
-<ul>
+<ul class="list-group">
   <% @bookmarks.each do |bookmark| %>
-    <li>
-      <%= link_to "Info", bookmark %>
-      |
-      <%= link_to bookmark.url, bookmark.url %>
-      |
-      <%= link_to "Delete", bookmark, data: {method: 'DELETE', confirm: 'You sure?'} %>
+    <li class="list-group-item">
+      <%= link_to "Info", bookmark, class: 'btn btn-default' %>
+      <%= link_to bookmark.url, bookmark.url, class: 'bookmark-link' %>
+      <%= link_to "Delete", bookmark, class: 'btn btn-danger right', data: {method: 'DELETE', confirm: 'You sure?'} %>
     </li>
   <% end %>
 </ul>

@@ -1,12 +1,6 @@
-<h1>Bookmark</h1>
+<h1>Bookmark: <%= link_to @bookmark.url, @bookmark.url %></h1>
 
 <%= render 'add_new' %>
-
-<br>
-
-<div>
-  URL: <%= link_to @bookmark.url, @bookmark.url %>
-</div>
 
 <div>
   <% refresh_link = link_to "refresh", update_info_bookmark_path(@bookmark), method: 'PUT' %>
@@ -22,13 +16,15 @@
 
   <% if @bookmark.source.github? %>
 
-    <ul>
-      <% @bookmark.info.each do |key, value| %>
-        <li>
-          <strong><%= key.capitalize %></strong>:
-          <%= value %>
-        </li>
-      <% end %>
+    <table class="table table-striped">
+      <tbody>
+        <% @bookmark.info.each do |key, value| %>
+          <tr>
+            <td><strong><%= key.humanize %></strong>:</td>
+            <td><%= value %></td>
+          </tr>
+        <% end %>
+      </tbody>
     </ul>
 
   <% elsif @bookmark.source.github_error? %>
