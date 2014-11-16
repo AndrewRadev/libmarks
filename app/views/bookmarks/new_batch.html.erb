@@ -1,0 +1,25 @@
+<h1>Batch-add bookmarks</h1>
+
+<% if @invalid_bookmarks.present? %>
+  <div>
+    <h2>Some links were not valid, please fix them first:</h2>
+
+    <ul>
+      <% @invalid_bookmarks.each do |bookmark| %>
+        <li><%= bookmark.url %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<div class="batch-add-bookmark">
+  <%= form_tag create_batch_bookmarks_path, method: 'POST' do %>
+    <%= text_area_tag :url_list, params[:url_list], {
+      class:       'form-control url-list-input',
+      placeholder: "Just paste each bookmark on a separate line",
+    } %>
+    <%= submit_tag "Add all", class: 'btn btn-lg btn-primary right' %>
+  <% end %>
+
+  <div class="clear"></div>
+</div>

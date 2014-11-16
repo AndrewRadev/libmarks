@@ -6,6 +6,10 @@
   float: right;
 }
 
+.clear {
+  clear: both;
+}
+
 .bookmark-link {
   margin-left: 10px;
   font-size: 16px;
@@ -19,5 +23,12 @@
 
   .url-input {
     width: 50%;
+  }
+}
+
+.batch-add-bookmark {
+  .url-list-input {
+    height: 300px;
+    margin-bottom: 10px;
   }
 }

@@ -13,6 +13,14 @@ class Bookmark < ActiveRecord::Base
     (read_attribute('source') || '').inquiry
   end
 
+  def self.create_from_list(urls)
+    bookmarks = urls.compact.map(&:strip).map do |url|
+      Bookmark.new(url: url)
+    end
+
+    bookmarks.partition(&:valid?)
+  end
+
   private
 
   def fetch_github_info

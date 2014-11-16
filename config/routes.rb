@@ -5,5 +5,10 @@ Rails.application.routes.draw do
     member do
       put :update_info
     end
+
+    collection do
+      get :new_batch
+      post :create_batch
+    end
   end
 end

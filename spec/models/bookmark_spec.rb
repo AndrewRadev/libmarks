@@ -5,6 +5,28 @@ describe Bookmark do
     let(:url) { 'http://github.com/AndrewRadev/splitjoin.vim' }
     let(:bookmark) { Bookmark.new(url: url) }
 
+    describe ".create_from_list" do
+      it "can create a list of valid bookmarks" do
+        valid_bookmarks, invalid_bookmarks = Bookmark.create_from_list([
+          'http://google.com',
+          'http://foo.bar',
+        ])
+
+        valid_bookmarks.count.should eq 2
+        invalid_bookmarks.should be_empty
+      end
+
+      it "finds invalid bookmarks" do
+        valid_bookmarks, invalid_bookmarks = Bookmark.create_from_list([
+          'http://google.com',
+          'foo bar baz',
+        ])
+
+        valid_bookmarks.count.should eq 1
+        invalid_bookmarks.count.should eq 1
+      end
+    end
+
     describe "#fetch_url_info" do
       around :each do |example|
         Timecop.freeze { example.run }

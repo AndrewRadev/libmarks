@@ -26,6 +26,29 @@ class BookmarksController < ApplicationController
     end
   end
 
+  def new_batch
+  end
+
+  def create_batch
+    url_list = params[:url_list]
+
+    if url_list.blank?
+      flash[:error] = "You didn't enter anything in the url list."
+      redirect_to new_batch_bookmarks_path
+      return
+    end
+
+    bookmarks, @invalid_bookmarks = Bookmark.create_from_list(url_list.split("\n"))
+
+    if @invalid_bookmarks.present?
+      render :new_batch
+    else
+      bookmarks.map(&:save!)
+      flash[:notice] = "All the links have been added"
+      redirect_to bookmarks_path
+    end
+  end
+
   def update_info
     @bookmark = Bookmark.find(params[:id])
     @bookmark.fetch_url_info
