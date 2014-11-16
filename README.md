@@ -29,7 +29,11 @@ In tentative chronological order:
 - [x] Migrate to postgresql
 - [ ] Users: authentication, per-user bookmarks
 - [x] Design: maybe just a simple bootstrap to begin with. Or a clone of The Ruby Toolbox (or something else)?
+- [ ] Batch adding of bookmarks
 - [ ] Categorisation and/or tagging of libraries
+- [ ] Fetch info via background job
+- [ ] Better layout for links, showing just project name, (repo name), tags, link to details
 - [ ] API access, remote bookmarking, a bookmarklet
 - [ ] Dead-simple Android app for bookmarking on the go (using the API)
 - [ ] Import a bunch of existing good gems from https://github.com/markets/awesome-ruby
+- [ ] Rubygems urls support
