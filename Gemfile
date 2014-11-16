@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.2.0.beta1'
+gem 'rails', '4.2.0.beta4'
 
 # Use the new and improved html sanitizer
 gem 'rails-html-sanitizer'
