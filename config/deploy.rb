@@ -27,7 +27,7 @@ set :linked_files, %w{config/secrets.yml config/database.yml}
 
 # Default value for linked_dirs is []
 # set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
-set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle}
+set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/assets}
 
 # Default value for default_env is {}
 set :default_env, { path: "/home/andrew/.gem/ruby/2.1.0/bin:$PATH" }
