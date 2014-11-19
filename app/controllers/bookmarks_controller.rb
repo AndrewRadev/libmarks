@@ -16,11 +16,11 @@ class BookmarksController < ApplicationController
     @bookmark = Bookmark.new(bookmark_params)
 
     if @bookmark.valid?
-      @bookmark.fetch_url_info
       @bookmark.save!
+      UrlInfoJob.perform_later(@bookmark)
 
       flash[:notice] = 'Bookmark was successfully created.'
-      redirect_to @bookmark
+      redirect_to bookmarks_path
     else
       render action: :new
     end
