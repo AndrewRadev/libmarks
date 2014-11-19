@@ -19,6 +19,9 @@ gem 'bootswatch-rails'
 # Background jobs
 gem 'sidekiq'
 
+# Cron jobs
+gem 'whenever', require: false
+
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 

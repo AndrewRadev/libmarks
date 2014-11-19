@@ -21,6 +21,12 @@ class Bookmark < ActiveRecord::Base
     bookmarks.partition(&:valid?)
   end
 
+  def self.refresh_all_info
+    Bookmark.find_each(batch_size: 100) do |bookmark|
+      UrlInfoJob.perform_later(bookmark)
+    end
+  end
+
   private
 
   def fetch_github_info

@@ -2,8 +2,13 @@ require 'rails_helper'
 
 describe Bookmark do
   describe "github link" do
-    let(:url) { 'http://github.com/AndrewRadev/splitjoin.vim' }
-    let(:bookmark) { Bookmark.new(url: url) }
+    def api_url(project_name)
+      "https://api.github.com/repos/AndrewRadev/#{project_name}"
+    end
+
+    def public_url(project_name)
+      "http://github.com/AndrewRadev/#{project_name}"
+    end
 
     describe ".create_from_list" do
       it "can create a list of valid bookmarks" do
@@ -28,12 +33,15 @@ describe Bookmark do
     end
 
     describe "#fetch_url_info" do
+      let(:url) { 'http://github.com/AndrewRadev/splitjoin.vim' }
+      let(:bookmark) { Bookmark.new(url: url) }
+
       around :each do |example|
         Timecop.freeze { example.run }
       end
 
       it "fetches the right info from github" do
-        stub_request(:get, 'https://api.github.com/repos/AndrewRadev/splitjoin.vim').to_return({
+        stub_request(:get, api_url('splitjoin.vim')).to_return({
           body: {
             'description' => 'A vim plugin',
             'language'    => 'VimL',
@@ -51,7 +59,7 @@ describe Bookmark do
       end
 
       it "handles errors" do
-        stub_request(:get, 'https://api.github.com/repos/AndrewRadev/splitjoin.vim').to_return({
+        stub_request(:get, api_url('splitjoin.vim')).to_return({
           status: 500
         })
 
@@ -60,6 +68,30 @@ describe Bookmark do
         bookmark.info_fetched_at.should eq Time.zone.now
         bookmark.source.should eq 'github_error'
         bookmark.info.should have_key("error")
+      end
+    end
+
+    describe ".refresh_all_info" do
+      it "refreshes the info for multiple bookmarks" do
+        stub_request(:get, api_url('splitjoin.vim')).to_return({
+          body: { 'description' => 'Updated splitjoin info' }.to_json
+        })
+        stub_request(:get, api_url('switch.vim')).to_return({
+          body: { 'description' => 'Updated switch info' }.to_json
+        })
+
+        first_bookmark = Bookmark.create({
+          url:  public_url('splitjoin.vim'),
+          info: {description: 'Splitjoin info'},
+        })
+        second_bookmark = Bookmark.create({
+          url: 'http://github.com/AndrewRadev/switch.vim',
+        })
+
+        Bookmark.refresh_all_info
+
+        first_bookmark.reload.info['description'].should eq 'Updated splitjoin info'
+        second_bookmark.reload.info['description'].should eq 'Updated switch info'
       end
     end
   end
