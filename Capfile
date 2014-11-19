@@ -7,8 +7,11 @@ require 'capistrano/deploy'
 # Includes rails-specific deployment tasks
 require 'capistrano/rails'
 
-# Include sidekiq tasks
+# Includes sidekiq tasks
 require 'capistrano/sidekiq'
+
+# Includes whenever tasks
+require 'whenever/capistrano'
 
 # Includes tasks from other gems included in your Gemfile
 #
