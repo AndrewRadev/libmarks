@@ -31,7 +31,7 @@ In tentative chronological order:
 - [x] Design: maybe just a simple bootstrap to begin with. Or a clone of The Ruby Toolbox (or something else)?
 - [x] Batch adding of bookmarks
 - [ ] Categorisation and/or tagging of libraries
-- [ ] Fetch info via background job
+- [x] Fetch info via background job
 - [ ] Better layout for links, showing just project name, (repo name), tags, link to details
 - [ ] API access, remote bookmarking, a bookmarklet
 - [ ] Dead-simple Android app for bookmarking on the go (using the API)
