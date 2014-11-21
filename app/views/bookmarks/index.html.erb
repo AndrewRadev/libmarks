@@ -5,13 +5,11 @@
 <ul class="list-group">
   <% @bookmarks.each do |bookmark| %>
     <li class="list-group-item">
-      <%= link_to "Info", bookmark, class: 'btn btn-default' %>
+      <%= link_to "Info", bookmark, class: 'btn btn-info' %>
       <%= link_to bookmark.url, bookmark.url, class: 'bookmark-link' %>
 
-      <% if bookmark.tag_list.present? %>
-        <span class="tags">
-          (<%= bookmark.tags.map { |t| link_to(t.name, search_path(tag: t.name)) }.join(', ').html_safe %>)
-        </span>
+      <% bookmark.tags.each do |tag| %>
+        <%= link_to tag.name, search_path(tag: tag.name), class: 'btn btn-sm btn-default' %>
       <% end %>
 
       <%= link_to "Delete", bookmark, class: 'btn btn-danger right', data: {method: 'DELETE', confirm: 'You sure?'} %>
