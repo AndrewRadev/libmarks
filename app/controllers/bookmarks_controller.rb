@@ -12,7 +12,7 @@ class BookmarksController < ApplicationController
   end
 
   def create
-    bookmark_params = params.require(:bookmark).permit(:url)
+    bookmark_params = params.require(:bookmark).permit(:url, :tag_list)
     @bookmark = Bookmark.new(bookmark_params)
 
     if @bookmark.valid?

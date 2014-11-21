@@ -40,6 +40,9 @@ gem 'jbuilder', '~> 2.0'
 # Github API for github links
 gem 'github_api'
 
+# Tags for bookmarks
+gem 'acts-as-taggable-on'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

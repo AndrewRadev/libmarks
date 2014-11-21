@@ -7,6 +7,11 @@
     <li class="list-group-item">
       <%= link_to "Info", bookmark, class: 'btn btn-default' %>
       <%= link_to bookmark.url, bookmark.url, class: 'bookmark-link' %>
+
+      <% if bookmark.tag_list.present? %>
+        <span class="tags">(<%= bookmark.tag_list %>)</span>
+      <% end %>
+
       <%= link_to "Delete", bookmark, class: 'btn btn-danger right', data: {method: 'DELETE', confirm: 'You sure?'} %>
     </li>
   <% end %>

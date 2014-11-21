@@ -3,6 +3,8 @@ class Bookmark < ActiveRecord::Base
 
   store :info, coder: JSON
 
+  acts_as_taggable_on :tags
+
   def fetch_url_info
     if uri.host == 'github.com'
       fetch_github_info
