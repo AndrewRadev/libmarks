@@ -2,6 +2,25 @@
 
 <%= render 'add_new' %>
 
+
+<div class="bookmark-form-box">
+  <div>
+    <% if @bookmark.errors.present? %>
+      <h3>There were problems saving the bookmark:</h2>
+
+      <% @bookmark.errors.full_messages.each do |message| %>
+        <%= message %>
+      <% end %>
+    <% end %>
+  </div>
+
+  <%= form_for @bookmark, html: {class: 'form-inline'} do |f| %>
+    <%= f.url_field :url, class: 'url-input form-control', placeholder: 'URL' %>
+    <%= f.text_field :tag_list, class: 'tags-input form-control', placeholder: 'Tags' %>
+    <%= f.submit "Update", class: 'btn btn-primary' %>
+  <% end %>
+</div>
+
 <div>
   <% refresh_link = link_to "refresh", update_info_bookmark_path(@bookmark), method: 'PUT' %>
 

@@ -15,14 +15,21 @@
   font-size: 16px;
 }
 
-.add-bookmark {
+.bookmark-form-box {
   padding: 20px;
   border: 1px solid #ddd;
   border-radius: 3px;
   margin-bottom: 10px;
 
-  .url-input {
+  .url-input { width: 50%; }
+
+  .field_with_errors {
+    display: inline-block;
     width: 50%;
+    box-shadow: red 0 0 5px;
+    border-radius: 4px;
+
+    .url-input { width: 100%; }
   }
 }
 

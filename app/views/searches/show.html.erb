@@ -1,6 +1,4 @@
-<h1>All the bookmarks</h1>
-
-<%= render 'add_new' %>
+<h1>Bookmarks tagged with: <%= @tag %></h1>
 
 <ul class="list-group">
   <% @bookmarks.each do |bookmark| %>
@@ -9,9 +7,7 @@
       <%= link_to bookmark.url, bookmark.url, class: 'bookmark-link' %>
 
       <% if bookmark.tag_list.present? %>
-        <span class="tags">
-          (<%= bookmark.tags.map { |t| link_to(t.name, search_path(tag: t.name)) }.join(', ').html_safe %>)
-        </span>
+        <span class="tags">(<%= bookmark.tag_list %>)</span>
       <% end %>
 
       <%= link_to "Delete", bookmark, class: 'btn btn-danger right', data: {method: 'DELETE', confirm: 'You sure?'} %>

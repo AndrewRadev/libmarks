@@ -49,6 +49,18 @@ class BookmarksController < ApplicationController
     end
   end
 
+  def update
+    bookmark_params = params.require(:bookmark).permit(:url, :tag_list)
+    @bookmark = Bookmark.find(params[:id])
+
+    if @bookmark.update_attributes(bookmark_params)
+      flash[:notice] = 'Bookmark was successfully updated.'
+      redirect_to @bookmark
+    else
+      render action: 'show'
+    end
+  end
+
   def update_info
     @bookmark = Bookmark.find(params[:id])
     @bookmark.fetch_url_info

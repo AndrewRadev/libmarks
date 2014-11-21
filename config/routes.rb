@@ -11,4 +11,6 @@ Rails.application.routes.draw do
       post :create_batch
     end
   end
+
+  resource :search
 end
