@@ -1,6 +1,6 @@
 class BookmarksController < ApplicationController
   def index
-    @bookmarks = Bookmark.order('created_at DESC')
+    @bookmarks = Bookmark.order('created_at DESC').includes(:tags)
   end
 
   def show
