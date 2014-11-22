@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141121072133) do
+ActiveRecord::Schema.define(version: 20141122180337) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,6 +26,17 @@ ActiveRecord::Schema.define(version: 20141121072133) do
     t.datetime "info_fetched_at"
     t.text     "info"
   end
+
+  create_table "registrations", force: true do |t|
+    t.string   "uid"
+    t.string   "provider"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "registrations", ["uid", "provider"], name: "index_registrations_on_uid_and_provider", using: :btree
+  add_index "registrations", ["user_id"], name: "index_registrations_on_user_id", using: :btree
 
   create_table "taggings", force: true do |t|
     t.integer  "tag_id"
@@ -46,5 +57,13 @@ ActiveRecord::Schema.define(version: 20141121072133) do
   end
 
   add_index "tags", ["name"], name: "index_tags_on_name", unique: true, using: :btree
+
+  create_table "users", force: true do |t|
+    t.string   "name"
+    t.string   "remember_token"
+    t.datetime "remember_token_expires_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
 end

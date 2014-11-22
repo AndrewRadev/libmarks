@@ -14,6 +14,20 @@ To get this working for a development machine, you need a working ruby setup. Ha
 bin/setup
 ```
 
+In order to get user authentication working, you'll need to set up social network keys in `secrets.yml`:
+
+``` yaml
+development:
+  facebook_key:    <%= ENV["LIBMARKS_FACEBOOK_KEY"] %>
+  facebook_secret: <%= ENV["LIBMARKS_FACEBOOK_SECRET"] %>
+  twitter_key:     <%= ENV["LIBMARKS_TWITTER_KEY"] %>
+  twitter_secret:  <%= ENV["LIBMARKS_TWITTER_SECRET"] %>
+  github_key:      <%= ENV["LIBMARKS_GITHUB_KEY"] %>
+  github_secret:   <%= ENV["LIBMARKS_GITHUB_SECRET"] %>
+```
+
+Creating the relevant apps and putting the environment keys in your `.bashrc` or `.zshrc` should be enough.
+
 To start the server, simply execute:
 
 ```

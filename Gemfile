@@ -43,6 +43,12 @@ gem 'github_api'
 # Tags for bookmarks
 gem 'acts-as-taggable-on'
 
+# User registration through social networks
+gem 'omniauth'
+gem 'omniauth-facebook'
+gem 'omniauth-twitter'
+gem 'omniauth-github'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
