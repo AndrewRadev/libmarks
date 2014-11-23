@@ -1,9 +1,15 @@
 <h1>Your profile</h1>
 
-<p>Name: <strong><%= current_user.name %></strong></p>
+<div class="form-box">
+  <%= form_for current_user, url: profile_path, html: {class: 'form-inline'} do |f| %>
+    Name: <%= f.text_field :name, class: 'form-control' %>
+    <%= f.submit "Update", class: 'btn btn-primary' %>
+  <% end %>
+</div>
 
 <p>
-  <h2>Registrations:</h2>
+  <h2 class="page-header">Registrations</h2>
+
   <ul class="list-group">
     <% registration_count = current_user.registrations.count %>
 
@@ -24,12 +30,12 @@
     <% end %>
   </ul>
 
-  <h2>Add a registration</h2>
+  <h2 class="page-header">Add a registration</h2>
   <%= render 'shared/social_connect' %>
 
   <div class="clear"></div>
 
-  <h2>Delete your account</h2>
+  <h2 class="page-header">Delete your account</h2>
   <%= link_to 'Delete your account', profile_path, {
     class: 'btn btn-danger',
     data: {

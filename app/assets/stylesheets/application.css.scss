@@ -21,12 +21,15 @@
   font-size: 16px;
 }
 
-.bookmark-form-box {
+.form-box {
   padding: 20px;
   border: 1px solid #ddd;
   border-radius: 3px;
   margin-bottom: 10px;
+}
 
+.bookmark-form-box {
+  @extend .form-box;
   .url-input { width: 50%; }
 
   .field_with_errors {
