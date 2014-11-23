@@ -7,6 +7,7 @@ Rails.application.routes.draw do
 
   resource :profile
   resource :search
+  resources :registrations
 
   resources :bookmarks do
     member do

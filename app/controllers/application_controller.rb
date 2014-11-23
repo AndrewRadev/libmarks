@@ -30,5 +30,6 @@ class ApplicationController < ActionController::Base
   rescue ActiveRecord::RecordNotFound
     session[:user_id] = nil
     cookies.delete('remember_user_token')
+    nil
   end
 end

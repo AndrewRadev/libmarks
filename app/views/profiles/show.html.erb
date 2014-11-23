@@ -4,15 +4,37 @@
 
 <p>
   <h2>Registrations:</h2>
-  <ul>
+  <ul class="list-group">
+    <% registration_count = current_user.registrations.count %>
+
     <% current_user.registrations.each do |registration| %>
-      <li><%= registration.provider %>: <strong><%= registration.uid %></strong></li>
+      <li class="list-group-item">
+        <% if registration_count > 1 %>
+          <%= link_to 'Remove', registration_path(registration), {
+            class: 'btn btn-small btn-danger',
+            data:  {
+              method:  'DELETE',
+              confirm: "Are you sure you want to remove this registration method?",
+            },
+          } %>
+        <% end %>
+
+        <%= registration.provider %>: <strong><%= registration.uid %></strong>
+      </li>
     <% end %>
   </ul>
 
-  <div>
-    <%= link_to 'Add twitter registration', '/auth/twitter' %> |
-    <%= link_to 'Add facebook registration', '/auth/facebook' %> |
-    <%= link_to 'Add github registration', '/auth/github' %>
-  </div>
+  <h2>Add a registration</h2>
+  <%= render 'shared/social_connect' %>
+
+  <div class="clear"></div>
+
+  <h2>Delete your account</h2>
+  <%= link_to 'Delete your account', profile_path, {
+    class: 'btn btn-danger',
+    data: {
+      method: 'DELETE',
+      confirm: "Are you sure you want to completely delete your account? There's no going back!"
+    }
+  } %>
 </p>

@@ -15,8 +15,8 @@ class ProfilesController < ApplicationController
   #   end
   # end
 
-  # def destroy
-  #   current_user.destroy
-  #   redirect_to about_page_path, :notice => 'Your account here has been deleted.'
-  # end
+  def destroy
+    current_user.destroy
+    redirect_to root_path, notice: 'Your account here has been deleted.'
+  end
 end
