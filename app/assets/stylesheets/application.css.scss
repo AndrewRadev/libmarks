@@ -10,6 +10,12 @@
   clear: both;
 }
 
+.animate {
+  transition:         .1s ease-in-out;
+  -webkit-transition: .1s ease-in-out;
+  -moz-transition:    .1s ease-in-out;
+}
+
 .bookmark-link {
   margin-left: 10px;
   font-size: 16px;
@@ -37,5 +43,53 @@
   .url-list-input {
     height: 300px;
     margin-bottom: 10px;
+  }
+}
+
+.social-connect-box {
+  width: 60%;
+  margin: 0 auto;
+
+  .btn-social {
+    width: 33%;
+    display: block;
+    float: left;
+    padding: 18px;
+    color: #fff;
+    font-size: 16px;
+    text-align: center;
+    @extend .animate;
+  }
+
+  .btn-facebook {
+    background: #3d5a99;
+    border: 1px solid #3d5a99;
+    border-radius: 8px 0 0 8px;
+    &:hover {
+      background: #26376c;
+      border: 1px solid #26376c;
+    }
+  }
+
+  .btn-twitter {
+    background: #00acee;
+    border: 1px solid #00acee;
+    border-radius: 0;
+    &:hover {
+      background: #0a4f76;
+      border: 1px solid #0a4f76;
+    }
+  }
+
+  .btn-github {
+    color: #000;
+    background: #eeede8;
+    border: 1px solid #d3d2cb;
+    border-radius: 0 8px 8px 0;
+
+    &:hover {
+      background: #c3c3bc;
+      border: 1px solid #c3c3bc;
+    }
   }
 }
