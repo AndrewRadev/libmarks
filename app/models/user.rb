@@ -18,8 +18,6 @@ class User < ActiveRecord::Base
     end
 
     def create_from_omniauth(auth)
-      auth = auth.deep_stringify_keys
-
       user = create! do |u|
         u.name = auth['info']['name']
       end
@@ -28,9 +26,7 @@ class User < ActiveRecord::Base
     end
 
     def find_from_omniauth(auth)
-      auth = auth.deep_symbolize_keys
-
-      registration = Registration.find_by_uid_and_provider(auth[:uid], auth[:provider])
+      registration = Registration.find_by(uid: auth['uid'], provider: auth['provider'])
       registration.try(:user)
     end
   end

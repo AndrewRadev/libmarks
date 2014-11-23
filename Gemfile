@@ -97,4 +97,7 @@ group :test do
 
   # freeze time
   gem 'timecop'
+
+  # create test data
+  gem 'factory_girl'
 end
