@@ -1,26 +1,26 @@
-class BookmarksController < ApplicationController
+class UserBookmarksController < ApplicationController
   def index
-    @bookmarks = Bookmark.order('created_at DESC').includes(:tags)
+    @bookmarks = UserBookmark.order('created_at DESC').includes(:tags)
   end
 
   def show
-    @bookmark = Bookmark.find(params[:id])
+    @bookmark = UserBookmark.find(params[:id])
   end
 
   def new
-    @bookmark = Bookmark.new
+    @bookmark = UserBookmark.new
   end
 
   def create
-    bookmark_params = params.require(:bookmark).permit(:url, :tag_list)
-    @bookmark = Bookmark.new(bookmark_params)
+    bookmark_params = params.require(:user_bookmark).permit(:url, :tag_list)
+    @bookmark = UserBookmark.new(bookmark_params)
 
     if @bookmark.valid?
       @bookmark.save!
       UrlInfoJob.perform_later(@bookmark)
 
       flash[:notice] = 'Bookmark was successfully created.'
-      redirect_to bookmarks_path
+      redirect_to user_bookmarks_path
     else
       render action: :new
     end
@@ -34,24 +34,24 @@ class BookmarksController < ApplicationController
 
     if url_list.blank?
       flash[:error] = "You didn't enter anything in the url list."
-      redirect_to new_batch_bookmarks_path
+      redirect_to new_batch_user_bookmarks_path
       return
     end
 
-    bookmarks, @invalid_bookmarks = Bookmark.create_from_list(url_list.split("\n"))
+    bookmarks, @invalid_bookmarks = UserBookmark.create_from_list(url_list.split("\n"))
 
     if @invalid_bookmarks.present?
       render :new_batch
     else
       bookmarks.map(&:save!)
       flash[:notice] = "All the links have been added"
-      redirect_to bookmarks_path
+      redirect_to user_bookmarks_path
     end
   end
 
   def update
-    bookmark_params = params.require(:bookmark).permit(:url, :tag_list)
-    @bookmark = Bookmark.find(params[:id])
+    bookmark_params = params.require(:user_bookmark).permit(:url, :tag_list)
+    @bookmark = UserBookmark.find(params[:id])
 
     if @bookmark.update_attributes(bookmark_params)
       flash[:notice] = 'Bookmark was successfully updated.'
@@ -62,7 +62,7 @@ class BookmarksController < ApplicationController
   end
 
   def update_info
-    @bookmark = Bookmark.find(params[:id])
+    @bookmark = UserBookmark.find(params[:id])
     @bookmark.fetch_url_info
     @bookmark.save!
 
@@ -71,7 +71,7 @@ class BookmarksController < ApplicationController
   end
 
   def destroy
-    @bookmark = Bookmark.find(params[:id])
+    @bookmark = UserBookmark.find(params[:id])
     @bookmark.destroy
 
     redirect_to action: :index

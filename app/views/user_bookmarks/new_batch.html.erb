@@ -13,7 +13,7 @@
 <% end %>
 
 <div class="batch-add-bookmark">
-  <%= form_tag create_batch_bookmarks_path, method: 'POST' do %>
+  <%= form_tag create_batch_user_bookmarks_path, method: 'POST' do %>
     <%= text_area_tag :url_list, params[:url_list], {
       class:       'form-control url-list-input',
       placeholder: "Just paste each bookmark on a separate line",

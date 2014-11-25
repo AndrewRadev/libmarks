@@ -1,4 +1,4 @@
-class Bookmark < ActiveRecord::Base
+class UserBookmark < ActiveRecord::Base
   validates :url, format: URI::regexp(['http', 'https'])
 
   store :info, coder: JSON
@@ -17,14 +17,14 @@ class Bookmark < ActiveRecord::Base
 
   def self.create_from_list(urls)
     bookmarks = urls.compact.map(&:strip).map do |url|
-      Bookmark.new(url: url)
+      UserBookmark.new(url: url)
     end
 
     bookmarks.partition(&:valid?)
   end
 
   def self.refresh_all_info
-    Bookmark.find_each(batch_size: 100) do |bookmark|
+    UserBookmark.find_each(batch_size: 100) do |bookmark|
       UrlInfoJob.perform_later(bookmark)
     end
   end

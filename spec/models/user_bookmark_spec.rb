@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe Bookmark do
+describe UserBookmark do
   describe "github link" do
     def api_url(project_name)
       "https://api.github.com/repos/AndrewRadev/#{project_name}"
@@ -12,7 +12,7 @@ describe Bookmark do
 
     describe ".create_from_list" do
       it "can create a list of valid bookmarks" do
-        valid_bookmarks, invalid_bookmarks = Bookmark.create_from_list([
+        valid_bookmarks, invalid_bookmarks = UserBookmark.create_from_list([
           'http://google.com',
           'http://foo.bar',
         ])
@@ -22,7 +22,7 @@ describe Bookmark do
       end
 
       it "finds invalid bookmarks" do
-        valid_bookmarks, invalid_bookmarks = Bookmark.create_from_list([
+        valid_bookmarks, invalid_bookmarks = UserBookmark.create_from_list([
           'http://google.com',
           'foo bar baz',
         ])
@@ -34,7 +34,7 @@ describe Bookmark do
 
     describe "#fetch_url_info" do
       let(:url) { 'http://github.com/AndrewRadev/splitjoin.vim' }
-      let(:bookmark) { Bookmark.new(url: url) }
+      let(:bookmark) { UserBookmark.new(url: url) }
 
       around :each do |example|
         Timecop.freeze { example.run }
@@ -80,15 +80,15 @@ describe Bookmark do
           body: { 'description' => 'Updated switch info' }.to_json
         })
 
-        first_bookmark = Bookmark.create({
+        first_bookmark = UserBookmark.create({
           url:  public_url('splitjoin.vim'),
           info: {description: 'Splitjoin info'},
         })
-        second_bookmark = Bookmark.create({
+        second_bookmark = UserBookmark.create({
           url: 'http://github.com/AndrewRadev/switch.vim',
         })
 
-        Bookmark.refresh_all_info
+        UserBookmark.refresh_all_info
 
         first_bookmark.reload.info['description'].should eq 'Updated splitjoin info'
         second_bookmark.reload.info['description'].should eq 'Updated switch info'

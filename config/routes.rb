@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root 'bookmarks#index'
+  root 'user_bookmarks#index'
 
   get '/pages/login'             => 'pages#login', as: 'login_page'
   get '/auth/:provider/callback' => 'omniauth#callback'
@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   resource :search
   resources :registrations
 
-  resources :bookmarks do
+  resources :user_bookmarks do
     member do
       put :update_info
     end
