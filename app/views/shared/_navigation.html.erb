@@ -10,11 +10,13 @@
   </div>
 
   <div class="navbar-collapse collapse">
-    <ul class="nav navbar-nav">
-      <%= nav_item.call('All bookmarks', user_bookmarks_path) %>
-      <%= nav_item.call('Add a new bookmark', new_user_bookmark_path) %>
-      <%= nav_item.call('Batch-add bookmarks', new_batch_user_bookmarks_path) %>
-    </ul>
+    <% if logged_in? %>
+      <ul class="nav navbar-nav">
+        <%= nav_item.call('All bookmarks', user_bookmarks_path) %>
+        <%= nav_item.call('Add a new bookmark', new_user_bookmark_path) %>
+        <%= nav_item.call('Batch-add bookmarks', new_batch_user_bookmarks_path) %>
+      </ul>
+    <% end %>
 
     <ul class="nav navbar-nav navbar-right">
       <% if logged_in? %>

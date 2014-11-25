@@ -11,8 +11,10 @@ describe UserBookmark do
     end
 
     describe ".create_from_list" do
+      let(:user) { create :user }
+
       it "can create a list of valid bookmarks" do
-        valid_bookmarks, invalid_bookmarks = UserBookmark.create_from_list([
+        valid_bookmarks, invalid_bookmarks = UserBookmark.create_from_list(user, [
           'http://google.com',
           'http://foo.bar',
         ])
@@ -22,7 +24,7 @@ describe UserBookmark do
       end
 
       it "finds invalid bookmarks" do
-        valid_bookmarks, invalid_bookmarks = UserBookmark.create_from_list([
+        valid_bookmarks, invalid_bookmarks = UserBookmark.create_from_list(user, [
           'http://google.com',
           'foo bar baz',
         ])
@@ -34,7 +36,7 @@ describe UserBookmark do
 
     describe "#fetch_url_info" do
       let(:url) { 'http://github.com/AndrewRadev/splitjoin.vim' }
-      let(:bookmark) { UserBookmark.new(url: url) }
+      let(:bookmark) { build :user_bookmark, url: url }
 
       around :each do |example|
         Timecop.freeze { example.run }
@@ -80,11 +82,11 @@ describe UserBookmark do
           body: { 'description' => 'Updated switch info' }.to_json
         })
 
-        first_bookmark = UserBookmark.create({
+        first_bookmark = create(:user_bookmark, {
           url:  public_url('splitjoin.vim'),
           info: {description: 'Splitjoin info'},
         })
-        second_bookmark = UserBookmark.create({
+        second_bookmark = create(:user_bookmark, {
           url: 'http://github.com/AndrewRadev/switch.vim',
         })
 

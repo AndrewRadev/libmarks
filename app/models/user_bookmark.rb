@@ -1,4 +1,7 @@
 class UserBookmark < ActiveRecord::Base
+  belongs_to :user
+
+  validates :user, presence: true
   validates :url, format: URI::regexp(['http', 'https'])
 
   store :info, coder: JSON
@@ -11,13 +14,17 @@ class UserBookmark < ActiveRecord::Base
     end
   end
 
+  def fetch_url_info_later
+    UrlInfoJob.perform_later(self)
+  end
+
   def source
     (read_attribute('source') || '').inquiry
   end
 
-  def self.create_from_list(urls)
+  def self.create_from_list(user, urls)
     bookmarks = urls.compact.map(&:strip).map do |url|
-      UserBookmark.new(url: url)
+      new(user: user, url: url)
     end
 
     bookmarks.partition(&:valid?)
@@ -25,7 +32,7 @@ class UserBookmark < ActiveRecord::Base
 
   def self.refresh_all_info
     UserBookmark.find_each(batch_size: 100) do |bookmark|
-      UrlInfoJob.perform_later(bookmark)
+      bookmark.fetch_url_info_later
     end
   end
 

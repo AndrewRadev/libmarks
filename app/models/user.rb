@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   has_many :registrations, dependent: :destroy
+  has_many :bookmarks, dependent: :destroy, class_name: 'UserBookmark'
 
   validates :name, presence: true
 
