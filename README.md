@@ -41,14 +41,16 @@ In tentative chronological order:
 - [x] Update to rails 4.2, take a look at http://raysrashmi.com/2014/09/02/new-features-in-rails-4-2
 - [x] Fetch library information from github, rubygems (and more places, later on)
 - [x] Migrate to postgresql
-- [ ] Users: authentication, per-user bookmarks
+- [x] Users: authentication, per-user bookmarks
 - [x] Design: maybe just a simple bootstrap to begin with. Or a clone of The Ruby Toolbox (or something else)?
 - [x] Batch adding of bookmarks
-- [ ] Categorisation and/or tagging of libraries
+- [x] Categorisation and/or tagging of libraries
 - [x] Fetch info via background job
+- [ ] Better tag input mechanism with completion
 - [ ] Better layout for links, showing just project name, (repo name), tags, link to details
+- [ ] Create global bookmarks, visible to anyone, from user ones
+- [ ] Rubygems urls support
+- [ ] Unify/link bookmarks -- simple duplicates, forks, homepage/rubygems/github/blog post
 - [ ] API access, remote bookmarking, a bookmarklet
 - [ ] Dead-simple Android app for bookmarking on the go (using the API)
 - [ ] Import a bunch of existing good gems from https://github.com/markets/awesome-ruby
-- [ ] Rubygems urls support
-- [ ] Unify/link bookmarks -- simple duplicates, forks, homepage/rubygems/github/blog post
