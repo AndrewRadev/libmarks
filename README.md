@@ -2,7 +2,7 @@
 
 Every time I encounter an interesting new library, I bookmark it in a special folder in my browser bookmarks. This doesn't scale very well. It's hard to discover libraries, hard to see which ones have recently updated, and which ones' development has stalled. You can't organize them very well or search them or sort them by different criteria. Technically, with some fooling around, you might be able to, but it could probably be done in a more convenient way.
 
-That's why I started this simple website to act as a better bookmark holder.
+That's why I started this simple website to act as a better bookmark holder for programming libraries.
 
 Another inspiration was the [The Ruby Toolbox](https://www.ruby-toolbox.com/). It's an excellent resource for popular ruby libraries, categorizing them and showing additional info, but there's no way to bookmark libraries there as personal favorites.
 
@@ -46,7 +46,7 @@ In tentative chronological order:
 - [x] Batch adding of bookmarks
 - [x] Categorisation and/or tagging of libraries
 - [x] Fetch info via background job
-- [ ] Info on the /pages/login page and longer /pages/about page
+- [x] Info on the /pages/login page
 - [ ] Exception notifications
 - [ ] Better tag input mechanism with completion
 - [ ] Better layout for links, showing just project name, (repo name), tags, link to details
