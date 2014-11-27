@@ -46,6 +46,7 @@ In tentative chronological order:
 - [x] Batch adding of bookmarks
 - [x] Categorisation and/or tagging of libraries
 - [x] Fetch info via background job
+- [ ] Info on the /pages/login page and longer /pages/about page
 - [ ] Exception notifications
 - [ ] Better tag input mechanism with completion
 - [ ] Better layout for links, showing just project name, (repo name), tags, link to details
