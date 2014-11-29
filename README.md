@@ -53,6 +53,7 @@ In tentative chronological order:
 - [ ] Create global bookmarks, visible to anyone, from user ones
 - [ ] Rubygems urls support
 - [ ] Unify/link bookmarks -- simple duplicates, forks, homepage/rubygems/github/blog post
+- [ ] Import a bunch of existing good gems from https://github.com/markets/awesome-ruby
+- [ ] Auto-import github stars if you've connected your github account
 - [ ] API access, remote bookmarking, a bookmarklet
 - [ ] Dead-simple Android app for bookmarking on the go (using the API)
-- [ ] Import a bunch of existing good gems from https://github.com/markets/awesome-ruby
