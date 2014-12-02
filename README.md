@@ -34,6 +34,12 @@ To start the server, simply execute:
 rails server
 ```
 
+## Production setup
+
+Right now, the app is not meant to be used in production on anything other than my own host, [libmarks.andrewradev.com](http://libmarks.andrewradev.com). If you want to get it running somewhere else, you'd have to tweak the capistrano recipes, and possibly other stuff.
+
+If you'd like help in setting it up for this purpose, open an issue in the bug tracker and I'll try to make it easier to configure.
+
 ## Stuff to do
 
 In tentative chronological order:
@@ -47,7 +53,7 @@ In tentative chronological order:
 - [x] Categorisation and/or tagging of libraries
 - [x] Fetch info via background job
 - [x] Info on the /pages/login page
-- [ ] Exception notifications
+- [x] Exception notifications
 - [ ] Better tag input mechanism with completion
 - [ ] Better layout for links, showing just project name, (repo name), tags, link to details
 - [ ] Create global bookmarks, visible to anyone, from user ones

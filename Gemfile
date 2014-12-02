@@ -43,6 +43,9 @@ gem 'github_api'
 # Tags for bookmarks
 gem 'acts-as-taggable-on'
 
+# Notify author on exceptions
+gem 'exception_notification', require: false
+
 # User registration through social networks
 gem 'omniauth'
 gem 'omniauth-facebook'
