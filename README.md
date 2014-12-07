@@ -40,6 +40,11 @@ Right now, the app is not meant to be used in production on anything other than 
 
 If you'd like help in setting it up for this purpose, open an issue in the bug tracker and I'll try to make it easier to configure.
 
+## Inspiration
+
+- The Ruby Toolbox: [https://www.ruby-toolbox.com/](https://www.ruby-toolbox.com/)
+- Astral:           [http://astralapp.com](http://astralapp.com)
+
 ## Stuff to do
 
 In tentative chronological order:
