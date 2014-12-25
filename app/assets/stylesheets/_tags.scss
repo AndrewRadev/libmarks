@@ -1,0 +1,38 @@
+.tag-input-container {
+  background-color: #fff;
+  background-image: none;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
+  color: #777;
+  display: block;
+  font-size: 13px;
+  height: 36px;
+  line-height: 1.42857;
+  // padding: 8px 12px;
+  transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s;
+  width: 100%;
+
+  .tag-input-tag {
+    display: inline-block;
+    padding: 2px 5px;
+    background: blue;
+    margin: 0px 2px;
+    color: #fff;
+    border-radius: 3px;
+
+    .tag-input-remove {
+      cursor: pointer;
+    }
+  }
+
+  input.tag-input-input {
+    height: 34px;
+    line-height: 1.42857;
+    border: 0;
+    box-shadow: none;
+    padding: 0;
+    margin: 0;
+    border-radius: 0;
+  }
+}

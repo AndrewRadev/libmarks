@@ -1,0 +1,2 @@
+$ ->
+  $('.js-tag-input').tagInput()
