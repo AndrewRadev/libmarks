@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.2.0.beta4'
+gem 'rails', '4.2.0'
 
 # Use the new and improved html sanitizer
 gem 'rails-html-sanitizer'
@@ -10,7 +10,7 @@ gem 'rails-html-sanitizer'
 gem 'pg'
 
 # Use SCSS for stylesheets
-gem 'sass-rails', '~> 5.0.0.beta1'
+gem 'sass-rails'
 
 # Use bootstrap for a simple design
 gem 'bootstrap-sass'
@@ -73,7 +73,7 @@ group :development do
   gem 'spring-commands-rspec'
 
   # Web console upon error
-  gem 'web-console', '~> 2.0.0.beta3'
+  gem 'web-console'
 
   # Use Capistrano for deployment
   gem 'capistrano',       '~> 3.1'
