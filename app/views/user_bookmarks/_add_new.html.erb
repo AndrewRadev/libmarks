@@ -5,7 +5,11 @@
 <div class="bookmark-form-box">
   <%= form_for bookmark, html: {class: 'form-inline'} do |f| %>
     <%= f.url_field :url, class: 'url-input form-control', placeholder: 'URL' %>
-    <%= f.text_field :tag_list, class: 'tag-input form-control js-tag-input', placeholder: 'Tags', value: 'one, two' %>
+    <%= f.text_field :tag_list, {
+      class:       'tag-input form-control js-tag-input',
+      data:        {role: "tagsinput"},
+      placeholder: 'Tags',
+    } %>
     <%= f.submit "Add", class: 'btn btn-primary' %>
   <% end %>
 </div>

@@ -19,4 +19,11 @@ Rails.application.routes.draw do
       post :create_batch
     end
   end
+
+  resources :tags do
+    collection do
+      get :prefetch
+      get :search
+    end
+  end
 end
