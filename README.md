@@ -59,7 +59,7 @@ In tentative chronological order:
 - [x] Fetch info via background job
 - [x] Info on the /pages/login page
 - [x] Exception notifications
-- [ ] Better tag input mechanism with completion
+- [x] Better tag input mechanism with completion
 - [ ] Better layout for links, showing just project name, (repo name), tags, link to details
 - [ ] Create global bookmarks, visible to anyone, from user ones
 - [ ] Rubygems urls support
@@ -69,3 +69,4 @@ In tentative chronological order:
 - [ ] Auto-import github stars if you've connected your github account
 - [ ] API access, remote bookmarking, a bookmarklet
 - [ ] Dead-simple Android app for bookmarking on the go (using the API)
+- [ ] Overall styling refactoring, compass/bourbon, own all style in the project
