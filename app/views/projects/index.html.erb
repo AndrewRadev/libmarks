@@ -1,0 +1,18 @@
+<h1>All your projects</h1>
+
+<%= render 'user_bookmarks/add_new' %>
+
+<ul class="list-group">
+  <% @projects.each do |project| %>
+    <li class="list-group-item">
+      <%= link_to "Info", project, class: 'btn btn-info' %>
+      <%= link_to project.name, project.main_url, class: 'bookmark-link' %>
+
+      <% project.tags.each do |tag| %>
+        <%= link_to tag.name, search_path(tag: tag.name), class: 'btn btn-sm btn-default' %>
+      <% end %>
+
+      <%= link_to "Delete", project, class: 'btn btn-danger right', data: {method: 'DELETE', confirm: 'You sure?'} %>
+    </li>
+  <% end %>
+</ul>

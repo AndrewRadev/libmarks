@@ -11,12 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141125214131) do
+ActiveRecord::Schema.define(version: 20150323164152) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "registrations", force: true do |t|
+  create_table "projects", force: :cascade do |t|
+    t.string   "name",       null: false
+    t.string   "main_url",   null: false
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "registrations", force: :cascade do |t|
     t.string   "uid"
     t.string   "provider"
     t.integer  "user_id"
@@ -27,7 +35,7 @@ ActiveRecord::Schema.define(version: 20141125214131) do
   add_index "registrations", ["uid", "provider"], name: "index_registrations_on_uid_and_provider", using: :btree
   add_index "registrations", ["user_id"], name: "index_registrations_on_user_id", using: :btree
 
-  create_table "taggings", force: true do |t|
+  create_table "taggings", force: :cascade do |t|
     t.integer  "tag_id"
     t.integer  "taggable_id"
     t.string   "taggable_type"
@@ -40,14 +48,14 @@ ActiveRecord::Schema.define(version: 20141125214131) do
   add_index "taggings", ["tag_id", "taggable_id", "taggable_type", "context", "tagger_id", "tagger_type"], name: "taggings_idx", unique: true, using: :btree
   add_index "taggings", ["taggable_id", "taggable_type", "context"], name: "index_taggings_on_taggable_id_and_taggable_type_and_context", using: :btree
 
-  create_table "tags", force: true do |t|
+  create_table "tags", force: :cascade do |t|
     t.string  "name"
     t.integer "taggings_count", default: 0
   end
 
   add_index "tags", ["name"], name: "index_tags_on_name", unique: true, using: :btree
 
-  create_table "user_bookmarks", force: true do |t|
+  create_table "user_bookmarks", force: :cascade do |t|
     t.string   "url",             null: false
     t.string   "language"
     t.text     "data"
@@ -57,11 +65,13 @@ ActiveRecord::Schema.define(version: 20141125214131) do
     t.datetime "info_fetched_at"
     t.text     "info"
     t.integer  "user_id",         null: false
+    t.integer  "project_id"
   end
 
+  add_index "user_bookmarks", ["project_id"], name: "index_user_bookmarks_on_project_id", using: :btree
   add_index "user_bookmarks", ["user_id"], name: "index_user_bookmarks_on_user_id", using: :btree
 
-  create_table "users", force: true do |t|
+  create_table "users", force: :cascade do |t|
     t.string   "name"
     t.string   "remember_token"
     t.datetime "remember_token_expires_at"

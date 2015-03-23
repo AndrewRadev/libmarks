@@ -96,5 +96,31 @@ describe UserBookmark do
         second_bookmark.reload.info['description'].should eq 'Updated switch info'
       end
     end
+
+    describe "#connect_project" do
+      it "finds an existing project if there is one" do
+        project = create :project, name: 'switch.vim'
+        bookmark = create :user_bookmark, url: 'http://github.com/AndrewRadev/switch.vim'
+        bookmark.connect_project
+
+        bookmark.project.should eq project
+      end
+
+      it "creates a new project from the given link" do
+        bookmark = create :user_bookmark, url: 'http://github.com/AndrewRadev/switch.vim'
+        bookmark.connect_project
+
+        bookmark.project.name.should eq 'switch.vim'
+        bookmark.project.main_url.should eq 'http://github.com/AndrewRadev/switch.vim'
+      end
+
+      it "sets the given user as the owner of a new project" do
+        user = create :user
+        bookmark = create :user_bookmark, url: 'http://github.com/AndrewRadev/switch.vim'
+        bookmark.connect_project(user)
+
+        bookmark.project.user.should eq user
+      end
+    end
   end
 end

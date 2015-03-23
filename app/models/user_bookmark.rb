@@ -1,5 +1,6 @@
 class UserBookmark < ActiveRecord::Base
   belongs_to :user
+  belongs_to :project
 
   validates :user, presence: true
   validates :url, format: URI::regexp(['http', 'https'])
@@ -16,6 +17,22 @@ class UserBookmark < ActiveRecord::Base
 
   def fetch_url_info_later
     UrlInfoJob.perform_later(self)
+  end
+
+  def connect_project(user = nil)
+    if uri.host == 'github.com'
+      user_name, repo_name = parse_github_link
+
+      self.project = Project.find_by(name: repo_name)
+
+      if self.project.blank?
+        self.project = Project.create! do |p|
+          p.name     = repo_name
+          p.user     = user
+          p.main_url = url
+        end
+      end
+    end
   end
 
   def source

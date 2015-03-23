@@ -1,0 +1,24 @@
+<h1>Project: <%= link_to @project.name, @project.main_url %></h1>
+
+<%= render 'user_bookmarks/add_new' %>
+
+<h2>Links:</h2>
+
+<ul class="list-group">
+  <% @project.links.each do |link| %>
+    <li class="list-group-item">
+      <%= link_to "Info", link, class: 'btn btn-info' %>
+      <%= link_to link.url, link.url, class: 'bookmark-link' %>
+
+      <% if link.url == @project.main_url %>
+        <strong>(main)</strong>
+      <% end %>
+
+      <% link.tags.each do |tag| %>
+        <%= link_to tag.name, search_path(tag: tag.name), class: 'btn btn-sm btn-default' %>
+      <% end %>
+
+      <%= link_to "Delete", link, class: 'btn btn-danger right', data: {method: 'DELETE', confirm: 'You sure?'} %>
+    </li>
+  <% end %>
+</ul>

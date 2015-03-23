@@ -12,7 +12,7 @@
   <div class="navbar-collapse collapse">
     <% if logged_in? %>
       <ul class="nav navbar-nav">
-        <%= nav_item.call('All bookmarks', user_bookmarks_path) %>
+        <%= nav_item.call('All projects', projects_path) %>
         <%= nav_item.call('Add a new bookmark', new_user_bookmark_path) %>
         <%= nav_item.call('Batch-add bookmarks', new_batch_user_bookmarks_path) %>
       </ul>

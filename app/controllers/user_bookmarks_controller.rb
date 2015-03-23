@@ -18,11 +18,17 @@ class UserBookmarksController < ApplicationController
     @bookmark = current_user.bookmarks.build(bookmark_params)
 
     if @bookmark.valid?
+      @bookmark.connect_project(current_user)
       @bookmark.save!
       @bookmark.fetch_url_info_later
 
       flash[:notice] = 'Bookmark was successfully created.'
-      redirect_to user_bookmarks_path
+
+      if @bookmark.project.present?
+        redirect_to @bookmark.project
+      else
+        redirect_to @bookmark
+      end
     else
       render action: :new
     end
@@ -78,6 +84,6 @@ class UserBookmarksController < ApplicationController
     @bookmark = current_user.bookmarks.find(params[:id])
     @bookmark.destroy
 
-    redirect_to action: :index
+    redirect_to projects_url
   end
 end

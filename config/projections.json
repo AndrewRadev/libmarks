@@ -1,0 +1,7 @@
+{
+  "spec/factories/*.rb": {
+    "command": "factory",
+    "affinity": "model",
+    "template": "require 'factory_girl'\n\nFactoryGirl.define do\n  factory :%s do\n  end\nend",
+  },
+}
