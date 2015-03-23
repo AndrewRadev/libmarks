@@ -60,10 +60,14 @@ In tentative chronological order:
 - [x] Info on the /pages/login page
 - [x] Exception notifications
 - [x] Better tag input mechanism with completion
-- [ ] Better layout for links, showing just project name, (repo name), tags, link to details
-- [ ] Create global bookmarks, visible to anyone, from user ones
+- [x] Better layout for links, showing just project name, (repo name), tags, link to details
+- [ ] Pagination
+- [ ] Language logo and source logo (github)
+- [ ] Filter by tags/language
+- [ ] Rate limiting on github info fetching
 - [ ] Rubygems urls support
 - [ ] jQuery plugin urls support: http://plugins.jquery.com/
+- [ ] Create global bookmarks, visible to anyone, from user ones
 - [ ] Unify/link bookmarks -- simple duplicates, forks, homepage/rubygems/github/blog post
 - [ ] Import a bunch of existing good gems from https://github.com/markets/awesome-ruby
 - [ ] Auto-import github stars if you've connected your github account
