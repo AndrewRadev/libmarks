@@ -52,10 +52,14 @@ class UserBookmarksController < ApplicationController
     if @invalid_bookmarks.present?
       render :new_batch
     else
-      bookmarks.map(&:save!)
-      bookmarks.map(&:fetch_url_info_later)
+      bookmarks.map do |bookmark|
+        bookmark.save!
+        bookmark.fetch_url_info_later
+        bookmark.connect_project(current_user)
+      end
+
       flash[:notice] = "All the links have been added"
-      redirect_to user_bookmarks_path
+      redirect_to projects_path
     end
   end
 
