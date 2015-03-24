@@ -1,6 +1,10 @@
 class ProjectsController < ApplicationController
   def index
-    @projects = Project.for_user(current_user).order('name')
+    @projects = Project.
+      for_user(current_user).
+      order('name').
+      includes(:links).
+      limit(20)
   end
 
   def show

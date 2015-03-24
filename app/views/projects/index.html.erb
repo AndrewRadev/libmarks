@@ -5,6 +5,7 @@
 <ul class="list-group">
   <% @projects.each do |project| %>
     <li class="list-group-item">
+      <%= link_to image_tag(language_icon_path(project), width: 50, height: 50) %>
       <%= link_to "Info", project, class: 'btn btn-info' %>
       <%= link_to project.name, project.main_url, class: 'bookmark-link' %>
 

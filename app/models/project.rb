@@ -9,4 +9,9 @@ class Project < ActiveRecord::Base
   def self.for_user(user)
     where(user_id: user.id)
   end
+
+  # TODO (2015-03-24) Store language information in project
+  def language
+    "VimL"
+  end
 end
