@@ -34,12 +34,16 @@ describe UserBookmark do
       end
     end
 
-    describe "#fetch_url_info" do
+    describe "#fetch_github_info" do
       let(:url) { 'http://github.com/AndrewRadev/splitjoin.vim' }
-      let(:bookmark) { build :user_bookmark, url: url }
+      let(:bookmark) { create :user_bookmark, url: url }
 
       around :each do |example|
-        Timecop.freeze { example.run }
+        Timecop.freeze do
+          Sidekiq::Testing.inline! do
+            example.run
+          end
+        end
       end
 
       it "fetches the right info from github" do
@@ -50,9 +54,10 @@ describe UserBookmark do
           }.to_json
         })
 
-        bookmark.fetch_url_info
+        bookmark.fetch_github_info
+        bookmark.reload
 
-        bookmark.info_fetched_at.should eq Time.zone.now
+        bookmark.info_fetched_at.should be_within(1.second).of Time.zone.now
         bookmark.source.should eq 'github'
         bookmark.info.should eq({
           'description' => 'A vim plugin',
@@ -65,9 +70,10 @@ describe UserBookmark do
           status: 500
         })
 
-        bookmark.fetch_url_info
+        bookmark.fetch_github_info
+        bookmark.reload
 
-        bookmark.info_fetched_at.should eq Time.zone.now
+        bookmark.info_fetched_at.should be_within(1.second).of Time.zone.now
         bookmark.source.should eq 'github_error'
         bookmark.info.should have_key("error")
       end

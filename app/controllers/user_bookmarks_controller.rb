@@ -20,7 +20,7 @@ class UserBookmarksController < ApplicationController
     if @bookmark.valid?
       @bookmark.connect_project(current_user)
       @bookmark.save!
-      @bookmark.fetch_url_info_later
+      @bookmark.fetch_github_info
 
       flash[:notice] = 'Bookmark was successfully created.'
 
@@ -54,7 +54,7 @@ class UserBookmarksController < ApplicationController
     else
       bookmarks.map do |bookmark|
         bookmark.save!
-        bookmark.fetch_url_info_later
+        bookmark.fetch_github_info
         bookmark.connect_project(current_user)
       end
 
@@ -77,7 +77,7 @@ class UserBookmarksController < ApplicationController
 
   def update_info
     @bookmark = current_user.bookmarks.find(params[:id])
-    @bookmark.fetch_url_info
+    @bookmark.fetch_github_info
     @bookmark.save!
 
     flash[:notice] = 'Info updated'

@@ -18,6 +18,8 @@ gem 'bootswatch-rails'
 
 # Background jobs
 gem 'sidekiq'
+# rate limiting for sidekiq jobs
+gem 'sidekiq-throttler'
 
 # Cron jobs
 gem 'whenever', require: false
