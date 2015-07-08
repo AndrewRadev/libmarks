@@ -30,6 +30,6 @@ class GithubInfoJob
   private
 
   def github_client
-    @github_client ||= Github.new
+    GITHUB_CLIENT
   end
 end

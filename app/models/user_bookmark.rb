@@ -10,7 +10,9 @@ class UserBookmark < ActiveRecord::Base
   acts_as_taggable_on :tags
 
   def fetch_github_info
-    GithubInfoJob.perform_async(id)
+    if uri.host == 'github.com'
+      GithubInfoJob.perform_async(id)
+    end
   end
 
   def connect_project(user = nil)

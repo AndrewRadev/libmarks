@@ -74,6 +74,9 @@ group :development do
   gem 'spring'
   gem 'spring-commands-rspec'
 
+  # for sidekiq's web app
+  gem 'sinatra-base'
+
   # Web console upon error
   gem 'web-console'
 

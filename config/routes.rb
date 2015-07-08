@@ -1,5 +1,11 @@
+require 'sidekiq/web'
+
 Rails.application.routes.draw do
   root 'projects#index'
+
+  if Rails.env.development?
+    mount Sidekiq::Web => '/sidekiq'
+  end
 
   get '/pages/login'             => 'pages#login', as: 'login_page'
   get '/auth/:provider/callback' => 'omniauth#callback'
