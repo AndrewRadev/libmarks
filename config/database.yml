@@ -24,5 +24,4 @@ test:
 production:
   <<: *default
   database: libmarks_production
-  username: libmarks
   password: <%= ENV['LIBMARKS_DATABASE_PASSWORD'] %>
