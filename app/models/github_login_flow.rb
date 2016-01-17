@@ -22,14 +22,17 @@ class GithubLoginFlow
     raise "States don't match: #{session_state}, #{state}" if session_state != state
   end
 
-  def create_user!
+  def find_or_create_user!
     token = GithubClients.app_client.get_token(code).token
 
     user_client = GithubClients.user_client(token)
     user_info = user_client.users.get
 
-    # TODO find user?
+    # Try to find a user
+    auth = Authentication.find_by(provider: 'github', token: token)
+    return auth.user if auth
 
+    # User not found, create one, with an authentication
     user = User.new({
       email:           user_info['email'],
       avatar_url:      user_info['avatar_url'],
@@ -37,6 +40,7 @@ class GithubLoginFlow
     })
     user.authentications.build(provider: 'github', token: token, scope: scope)
     user.save!
+    user
   end
 
   def random_state
