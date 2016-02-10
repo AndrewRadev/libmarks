@@ -2,4 +2,12 @@ class User < ActiveRecord::Base
   has_many :authentications
 
   validates :email, presence: true, uniqueness: true
+
+  def github_client
+    @github_client ||=
+      begin
+        github_auth = authentications.find_by!(provider: 'github')
+        GithubClients.user_client(github_auth.token)
+      end
+  end
 end

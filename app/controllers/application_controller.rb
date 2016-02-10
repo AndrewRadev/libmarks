@@ -1,6 +1,12 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
+  def require_user
+    if not logged_in?
+      redirect_to '/', notice: 'You need to log in first'
+    end
+  end
+
   def log_in(user)
     session[:user_id] = user.id
   end

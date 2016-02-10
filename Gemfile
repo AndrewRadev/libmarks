@@ -11,6 +11,8 @@ gem 'coffee-rails', '~> 4.1.0'
 # gem 'therubyracer', platforms: :ruby
 
 gem 'github_api'
+gem 'sidekiq'
+gem 'sinatra', require: nil
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
@@ -20,8 +22,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'good_migrations'
 
 group :development, :test do
-  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug'
+  gem 'pry'
   gem 'rspec-rails'
 end
 
