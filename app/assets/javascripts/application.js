@@ -1,3 +1,13 @@
 //= require jquery
 //= require jquery_ujs
-//= require_tree .
+//= require bootstrap-sprockets
+
+$.fn.dump = function(label) {
+  if (label) {
+    console.log([label, this]);
+  } else {
+    console.log(this);
+  }
+
+  return this;
+};
