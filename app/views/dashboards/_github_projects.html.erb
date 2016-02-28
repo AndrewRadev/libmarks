@@ -1,8 +1,5 @@
 <% page = (params[:page] || 1).to_i %>
 
-(Github API rate limit:
-<%= projects.headers.ratelimit_remaining %>/<%= projects.headers.ratelimit_limit %>)
-
 <p>
   <% if page > 1 %>
     <%= link_to 'Prev', url_for(page: page - 1) %>
@@ -11,10 +8,10 @@
   <% end %>
 
   |
-  Page: <%= page %>/<%= projects.count_pages %>
+  Page: <%= page %>/???
   |
 
-  <% if projects.has_next_page? %>
+  <% if true or (projects.has_next_page?) %>
     <%= link_to 'Next', url_for(page: page + 1) %>
   <% else %>
     Next
@@ -23,6 +20,6 @@
 
 <ul>
   <% projects.each do |project| %>
-    <li><%= link_to project.name, project.html_url %></li>
+    <li><%= link_to project.name, project.homepage_url %></li>
   <% end %>
 </ul>

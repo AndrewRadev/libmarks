@@ -1,6 +1,9 @@
 class User < ActiveRecord::Base
   has_many :authentications
 
+  has_many :project_connections
+  has_many :projects, through: :project_connections
+
   validates :email, presence: true, uniqueness: true
 
   def github_client

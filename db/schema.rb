@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151220221752) do
+ActiveRecord::Schema.define(version: 20160228153237) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,6 +27,27 @@ ActiveRecord::Schema.define(version: 20151220221752) do
 
   add_index "authentications", ["user_id", "provider", "token"], name: "index_authentications_on_user_id_and_provider_and_token", using: :btree
 
+  create_table "project_connections", force: :cascade do |t|
+    t.integer  "user_id",                       null: false
+    t.integer  "project_id",                    null: false
+    t.integer  "relationship_type", default: 0, null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "project_connections", ["project_id"], name: "index_project_connections_on_project_id", using: :btree
+  add_index "project_connections", ["user_id"], name: "index_project_connections_on_user_id", using: :btree
+
+  create_table "projects", force: :cascade do |t|
+    t.string   "name",            null: false
+    t.string   "homepage_url",    null: false
+    t.string   "language"
+    t.text     "github_info"
+    t.datetime "info_fetched_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string   "email",           null: false
     t.string   "github_username"
@@ -36,4 +57,6 @@ ActiveRecord::Schema.define(version: 20151220221752) do
   end
 
   add_foreign_key "authentications", "users"
+  add_foreign_key "project_connections", "projects"
+  add_foreign_key "project_connections", "users"
 end

@@ -1,7 +1,10 @@
 <% if logged_in? %>
   <p>
-    <%# TODO (2016-02-15) Use the controller for this %>
-    <%= render 'github_projects', projects: GithubProjects.new(current_user).fetch(page: params[:page]) %>
+    <%= link_to 'Refresh project list', project_updates_path, method: :post %>
+  </p>
+
+  <p>
+    <%= render 'github_projects', projects: current_user.projects.order('name') %>
   </p>
 <% else %>
   <p>Not logged in</p>
