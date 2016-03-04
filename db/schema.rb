@@ -35,8 +35,7 @@ ActiveRecord::Schema.define(version: 20160228153237) do
     t.datetime "updated_at"
   end
 
-  add_index "project_connections", ["project_id"], name: "index_project_connections_on_project_id", using: :btree
-  add_index "project_connections", ["user_id"], name: "index_project_connections_on_user_id", using: :btree
+  add_index "project_connections", ["user_id", "project_id"], name: "index_project_connections_on_user_id_and_project_id", unique: true, using: :btree
 
   create_table "projects", force: :cascade do |t|
     t.string   "name",            null: false

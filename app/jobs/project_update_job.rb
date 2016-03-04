@@ -26,11 +26,16 @@ class ProjectUpdateJob < ActiveJob::Base
 
       project.update!(info_fetched_at: Time.zone.now)
 
-      ProjectConnection.find_or_create_by!({
-        project:           project,
-        user:              user,
-        relationship_type: 'favorite',
-      })
+      begin
+        ProjectConnection.find_or_create_by!({
+          project_id:        project.id,
+          user_id:           user.id,
+          relationship_type: 'favorite',
+        })
+      rescue ActiveRecord::RecordNotUnique
+        # we can ignore this, probably created by another thread
+        Rails.logger.info "ProjectConnection record wasn't created, already exists"
+      end
     end
 
     ProjectUpdateJob.perform_later(user_id, page + 1)
