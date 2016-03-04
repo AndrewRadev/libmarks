@@ -18,15 +18,16 @@ gem 'sinatra', require: nil
 gem 'jquery-rails'
 gem 'jbuilder', '~> 2.0'
 
-# Don't allow app code into migrations
-gem 'good_migrations'
-
 group :development, :test do
   gem 'pry'
   gem 'rspec-rails'
 end
 
 group :development do
+  # Don't allow app code into migrations
+  gem 'good_migrations'
+  gem 'quiet_assets'
+  gem 'pry-rails'
   gem 'spring'
   gem 'spring-commands-rspec'
 end
