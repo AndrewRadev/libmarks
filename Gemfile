@@ -18,6 +18,8 @@ gem 'sinatra', require: nil
 gem 'jquery-rails'
 gem 'jbuilder', '~> 2.0'
 
+gem 'ember-cli-rails', '0.7.2'
+
 group :development, :test do
   gem 'pry'
   gem 'rspec-rails'

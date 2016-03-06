@@ -12,3 +12,6 @@
 !/log/.keep
 /tmp
 .byebug_history
+
+# Ignore symlink to ember assets
+/app/assets/javascripts/ember-cli-frontend
